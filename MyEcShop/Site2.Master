@@ -1,0 +1,108 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site2.master.cs" Inherits="MyEcShop.Site2" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<form id ="form1" runat="server">
+       <div class="block clearfix">
+        <div class="f_l">
+            <a name="top" href="Main.aspx">
+                <img src="images/logo.gif"></a></div>
+        <div class="f_r log">
+           <ul>
+                <li class="userInfo"><font id="ECS_MEMBERZONE">
+                    <div id="append_parent">
+                    </div>
+                    <asp:Label ID="Label1" runat="server" Text="游客" ForeColor="Red"></asp:Label>
+                    欢迎光临本店&nbsp;&nbsp;&nbsp;&nbsp; 
+
+                    <%--<a href="#"><img src="images/bnt_log.gif"/></a> --%>
+                    <asp:ImageButton ID="ImageButton2" runat="server" src="images/bnt_log.gif" 
+                        onclick="ImageButton2_Click" />
+                    <asp:ImageButton ID="ImageButton1" runat="server" src="images/bnt_reg.gif" 
+                        onclick="ImageButton1_Click" />
+                    <%--<a href="#"><img src="images/bnt_reg.gif"/></a> </font></li>--%>
+            </ul>
+        </div>
+    </div>
+    <div class="blank">
+    </div>
+    <div class="clearfix" id="mainNav">
+        <a class="cur" href="main.aspx">首页</a>
+        <asp:Repeater ID="Repeater1" runat="server">
+        <ItemTemplate>
+        <a href="Category.aspx?BLID=<%# Eval("BLID") %>"><%# Eval("BLName") %></asp:Label></a>
+        </ItemTemplate>
+        </asp:Repeater>
+
+
+    </div>
+    <div class="clearfix" id="search">
+        <span style="_position: relative; top: 5px;" class="f_r" onsubmit="" action="#" method="get"
+        name="searchForm" id="searchForm">
+        书名:<%--<input type="text" style="width: 110px;" class="B_input" value="" id="keyword"
+            name="keywords">--%>
+            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+        <%--<input type="submit" style="cursor: pointer;" class="go" value="" name="imageField">--%>
+            <asp:Button ID="Button1" runat="server" Text="查询" style="cursor: pointer;" 
+            class="go" onclick="Button1_Click"/>
+        </span>
+    </div>
+           <div class="block clearfix">
+        <div class="block clearfix">
+        <div class="AreaL">
+            <div id="ECS_CARTINFO" class="cart">
+                <a title="查看购物车" href="flow.aspx">您的购物车中有 
+                    <asp:Label ID="Label2" runat="server" Text="0" ForeColor ="Red"></asp:Label> 件商品，总计金额 ￥
+                    <asp:Label ID="Label3" runat="server" Text="0.00"></asp:Label>元。</a>
+            </div>
+            <div class="blank5">
+            </div>
+            <div class="box">
+                <div class="box_1">
+                    <div id="category_tree">
+
+                        <asp:TreeView ID="TreeView1" runat="server" 
+                            ExpandImageToolTip="0">
+                        </asp:TreeView>
+
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+            </div>
+            <div class="blank5">
+            </div>
+        </div>
+        <div class="AreaR">
+       
+           <asp:ContentPlaceHolder ID="head" runat="server">
+
+     
+           </asp:ContentPlaceHolder>
+           </div>
+        <div class="blank5">
+        </div>
+    </div>
+          
+        <div id="footer">
+        <div class="text">
+            &copy; 2005-2012 ECSHOP 版权所有，并保留所有权利。<br>
+            <br>
+            共执行 41 个查询，用时 0.090556 秒，在线 2 人，Gzip 已禁用，占用内存 3.136 MB<br>
+            <a style="font-family: Verdana; font-size: 11px;" target="_blank" href="http://www.ecshop.com">
+                Powered&nbsp;by&nbsp;<strong><span style="color: #3366FF">ECShop</span>&nbsp;<span
+                    style="color: #FF9966">v2.7.0</span></strong></a>&nbsp;<br>
+            <div align="left" id="rss">
+                <a href="manage/Index.aspx">
+                    <img alt="rss" src="images/xml_rss2.gif"></a></div>
+        </div>
+    </div>
+    </form>
+    </body>
+</html>
