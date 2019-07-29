@@ -1,7 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="MyEcShop.Login" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 	<script type="text/javascript">
-    
+		function change(obj) {
+
+			obj.src = "../VerificationCode.aspx?=" + new Date();
+
+		}
+		    
 </script>
 	<style type="text/css">
 		.auto-style1 {
@@ -68,7 +73,8 @@
                                         </td>
                                         <td bgcolor="#ffffff">
                                             <font id="ECS_MEMBERZONE">
-                    						<asp:Image ID="Image1" runat="server" ImageUrl="~/VerificationCode.aspx" Height="21px" Width="93px"/>
+												<img Height="21px" onclick="change(this)" Width="93px" src="../VerificationCode.aspx" alt="Alternate Text" />
+                    						<%--<asp:Image onclick="change()" ID="Image1" runat="server" ImageUrl="~/VerificationCode.aspx" Height="21px" Width="93px"/>--%>
                                             
                                             </font>
                                             <asp:TextBox ID="TextBox7" CssClass="auto-style3" runat="server" 
@@ -121,11 +127,12 @@
                                         &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
                                                 ControlToValidate="TextBox4" Display="Dynamic" 
                                                 ErrorMessage="邮箱不能为空!" ValidationGroup="1">邮箱不能为空!</asp:RequiredFieldValidator>
-                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" 
+                                         <%--   <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" 
                                                 ControlToValidate="TextBox4" Display="None" 
                                                 ErrorMessage="邮箱格式不正确!" 
                                                 ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" 
-                                                ValidationGroup="1">邮箱格式不正确!</asp:RegularExpressionValidator>
+                                                ValidationGroup="1">邮箱格式不正确!</asp:RegularExpressionValidator>--%>
+																	<asp:RegularExpressionValidator ControlToValidate="TextBox4" ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ID="RegularExpressionValidator2" runat="server" ErrorMessage="邮箱格式错误"></asp:RegularExpressionValidator>
                                         </td>
                                     </tr>
                                     <tr>

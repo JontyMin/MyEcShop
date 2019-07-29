@@ -35,11 +35,12 @@ namespace MyEcShop.manage
             string BSName = this.TextBox1.Text;
             if (BSCategoryDAL.updateByBSID(BLID,BSName,BSID)>0)
             {
-                Response.Write("编辑成功");
+				Alert("编辑成功");
+				Response.Redirect("goodSType.aspx");
             }
             else
             {
-                Response.Write("编辑失败");
+				Alert("编辑失败");
             }
         }
 
@@ -47,5 +48,11 @@ namespace MyEcShop.manage
         {
             this.TextBox1.Text = "";
         }
-    }
+
+		public void Alert(string str_Message)
+		{
+
+			Page.ClientScript.RegisterStartupScript(Page.GetType(), "message", "<script language='javascript' defer>alert('" + str_Message + "');</script>");
+		}
+	}
 }

@@ -27,16 +27,22 @@ namespace DAL
         public static List<OrderDetails> getOrderDetailByOID(string OID)
         {
             List<OrderDetails> list = new List<OrderDetails>();
-            SqlDataReader sdr = DBHelp.MyExecuteReader(string.Format("select * from OrderDetails where OID='{0}'", OID), null);
-            while (sdr.Read())
-            {
-                OrderDetails o = new OrderDetails();
-                o.OID = sdr["OID"].ToString();
-                o.BID = Convert.ToInt32(sdr["BID"]);
-                o.BPrice = Convert.ToInt32(sdr["BPrice"]);
-                o.BCount = Convert.ToInt32(sdr["BCount"]);
-                list.Add(o);
-            }
+			String sql = string.Format("select * from OrderDetails where OID=@OID");
+			SqlParameter[] sp = new SqlParameter[] {
+				new SqlParameter("@OID",OID)
+			};
+			using (SqlDataReader sdr = DBHelp.MyExecuteReader(sql, sp))
+			{
+				while (sdr.Read())
+				{
+					OrderDetails o = new OrderDetails();
+					o.OID = sdr["OID"].ToString();
+					o.BID = Convert.ToInt32(sdr["BID"]);
+					o.BPrice = Convert.ToInt32(sdr["BPrice"]);
+					o.BCount = Convert.ToInt32(sdr["BCount"]);
+					list.Add(o);
+				}
+			}
             return list;
         }
     }

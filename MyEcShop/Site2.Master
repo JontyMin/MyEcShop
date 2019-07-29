@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>ECSHOP</title>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -17,6 +17,8 @@
            <ul>
                 <li class="userInfo"><font id="ECS_MEMBERZONE">
                     <div id="append_parent">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<%--						<asp:Button ID="Button2" runat="server" Height="19px" Text="退出登录" Width="99px" BackColor="#66FFFF" BorderStyle="Inset" Font-Size="Smaller" OnClick="Button2_Click" />--%>
                     </div>
                     <asp:Label ID="Label1" runat="server" Text="游客" ForeColor="Red"></asp:Label>
                     欢迎光临本店&nbsp;&nbsp;&nbsp;&nbsp; 
@@ -49,8 +51,8 @@
             name="keywords">--%>
             <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
         <%--<input type="submit" style="cursor: pointer;" class="go" value="" name="imageField">--%>
-            <asp:Button ID="Button1" runat="server" Text="查询" style="cursor: pointer;" 
-            class="go" onclick="Button1_Click"/>
+            <asp:Button ID="Button1" runat="server" style="cursor: pointer;" 
+            class="go" onclick="Button1_Click" BackColor="#66CCFF"/>
         </span>
     </div>
            <div class="block clearfix">

@@ -22,6 +22,7 @@ namespace MyEcShop
             {
                 ShowDate();
             }
+
         }
 
         private void ShowDate()
@@ -131,20 +132,32 @@ namespace MyEcShop
 			{
 				
 				string ids = "";
+				CheckBox ck1 = null;
+				int id = 0;
 				foreach (RepeaterItem item in Repeater1.Items)
 				{
-					CheckBox ck1 = item.FindControl("CheckBox1") as CheckBox;
+					 ck1 = item.FindControl("CheckBox1") as CheckBox;
+					
 					if (ck1.Checked)
 					{
 						LinkButton lbt1 = item.FindControl("LinkButton1") as LinkButton;
 						ids += (lbt1.CommandArgument + ",");
-						if (ids==null)
-						{
-							ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('购物车是空的哦，快去主页选购商品吧')</script>");
-						}
+						id++;
 					}
+				
 				}
-				Response.Redirect("consignee.aspx?ids=" + ids);
+
+				if (ids!= null && id>0)
+				{
+					Response.Redirect("consignee.aspx?ids=" + ids);
+					
+				}
+				else
+				{
+					ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('请选择您要下单的商品')</script>");
+				}
+				
+
 			}
 			else
 			{
@@ -161,6 +174,10 @@ namespace MyEcShop
             if (ck1.Checked == false) this.CheckBox2.Checked = false;
         }
 
+		/// <summary>
+		/// 提示框
+		/// </summary>
+		/// <param name="str_Message"></param>
 		public void Alert(string str_Message)
 		{
 
@@ -170,9 +187,10 @@ namespace MyEcShop
 		{
 
 		}
+		int id = 0;
 		protected void Button1_Click(object sender, EventArgs e)
 		{
-			int id = 0;
+			
 			foreach (RepeaterItem item in Repeater1.Items)
 			{
 				CheckBox ck1 = item.FindControl("CheckBox1") as CheckBox;
@@ -191,9 +209,13 @@ namespace MyEcShop
 			if (id > 0)
 			{
 
-				ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('空空如也')</script>");
+				Alert("空空如也");
 				CheckBox2.Checked = false;
 				ShowDate();
+			}
+			else
+			{
+				Alert("啥也没选中");
 			}
 		}
 	}

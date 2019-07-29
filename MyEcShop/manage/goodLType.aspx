@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>商品大类别</title>
     <script type="text/javascript">
         function del() {
             if (confirm("您确定要删除吗？")) {
@@ -66,8 +66,8 @@
                        <td align="center">
                            <a href='goodLTypeEdit.aspx?BLID=<%# Eval("BLID") %>&BLName=<%#Eval("BLName") %>' title="编辑">
                                 <img src="images/icon_edit.gif" width="16" height="16" border="0" /></a>
-                           <a><asp:ImageButton ID="ImageButton2" runat="server" OnClick="ImageButton1_Click" src="images/icon_trash.gif" CommandArgument='<%# Eval("BLID") %>' title="回收站" OnClientClick="return del()"/></a>
-                           <a><asp:ImageButton ID="ImageButton3" runat="server" PostBackUrl="goodSType.aspx" src="images/icon_view.gif" CommandArgument='<%# Eval("BLID") %>' title="查看小类别"/></a>
+                           <a><asp:ImageButton ID="ImageButton2" runat="server" OnClick="ImageButton2_Click" src="images/icon_trash.gif" CommandArgument='<%# Eval("BLID") %>' title="回收站" OnClientClick="return del()"/></a>
+                           <a><asp:ImageButton ID="ImageButton3" runat="server" OnClick="ImageButton3_Click" PostBackUrl="goodSType.aspx" src="images/icon_view.gif" CommandArgument='<%# Eval("BLID") %>' title="查看小类别"/></a>
                         </td>
                     </tr>
             </ItemTemplate>

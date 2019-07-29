@@ -38,17 +38,19 @@
     </style>
             <div class="blank5">
             </div>
-           <%-- <div class="box clearfix">
+            <div class="box clearfix">
                 <a href="Category.aspx"><center><img src="img/20070802101706625.jpg" style="display: none; margin: 0px 0px; width:750px; height:200px;" id="img1" index="1" /></center></a>
                 <a href="Category.aspx"><center><img src="img/two.jpg" style="display: block; margin: 0px 0px;width:750px; height:200px;" id="img2" index="2" /></center></a>
+
                 <a href="Category.aspx"><center><img src="images/dd_scroll_2.jpg" style="display:none; margin: 0px 0px; width:750px; height:200px;" id="img3" index="3" /></center></a>
                 <a href="Category.aspx"><center><img src="images/dd_scroll_3.jpg" style="display:none; margin: 0px 0px; width:750px; height:200px;" id="img4" index="4" /></center></a>
                 <a href="Category.aspx"><center><img src="images/dd_scroll_4.jpg" style="display:none; margin: 0px 0px; width:750px; height:200px;" id="img5" index="5" /></center></a>
                 <a href="Category.aspx"><center><img src="images/dd_scroll_5.jpg" style="display:none; margin: 0px 0px; width:750px; height:200px;" id="img6" index="6" /></center></a>
                 <a href="Category.aspx"><center><img src="images/dd_scroll_6.jpg" style="display:none; margin: 0px 0px; width:750px; height:200px;" id="img7" index="7" /></center></a>
                 <a href="Category.aspx"><center><img src="img/one.jpg" style="display: none; margin: 0px 0px; width:750px; height:200px; " id="img8" index="8"  /></center></a>
-                <a href="Category.aspx"><center><img src="img/two.jpg" style="display: block; margin: 0px 0px;width:750px; height:200px;" id="img9" index="9" /></center></a>--%>
-            <div class="blank5">
+                <a href="Category.aspx"><center><img src="img/two.jpg" style="display: block; margin: 0px 0px;width:750px; height:200px;" id="img9" index="9" /></center></a>
+            				</div>
+				<div class="blank5">
             </div>
             <div class="blank5">
             </div>

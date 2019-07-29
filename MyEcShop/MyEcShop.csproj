@@ -1024,6 +1024,9 @@
     <Content Include="img\one.jpg" />
     <Content Include="img\pixviewer.swf" />
     <Content Include="img\two.jpg" />
+    <Content Include="404.html" />
+    <Content Include="js\bodymovin.js" />
+    <Content Include="js\data.js" />
     <Content Include="Login.aspx" />
     <Content Include="Main.aspx" />
     <Content Include="manage\clear.aspx" />
@@ -1059,6 +1062,7 @@
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="css\StyleSheet.css" />
     <Content Include="VerificationCode.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

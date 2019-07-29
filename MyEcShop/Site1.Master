@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>ECSHOP</title>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -49,7 +49,7 @@
             name="keywords">--%>
             <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
         <%--<input type="submit" style="cursor: pointer;" class="go" value="" name="imageField">--%>
-            <asp:Button ID="Button1" runat="server" Text="查询" style="cursor: pointer;" 
+            <asp:Button ID="Button1" runat="server" style="cursor: pointer;" 
             class="go" onclick="Button1_Click"/>
         </span>
     </div>

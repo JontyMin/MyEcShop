@@ -6,14 +6,14 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>商品列表</title>
     <script type="text/javascript">
-        function del() {
-            if (confirm("您确定要删除吗？")) {
-                return true;
-            }
-            return false;
-        }
+		function del() {
+			if (confirm("您确定要删除吗？")) {
+				return true;
+			}
+			return false;
+		}
     </script>
     <link href="styles/general.css" rel="stylesheet" type="text/css" />
     <link href="styles/main.css" rel="stylesheet" type="text/css" />
@@ -58,7 +58,7 @@
                 <th>
                     编号
                 </th>
-                <th>
+                <th colspan="2">
                     商品名称
                 </th>
                 <th>
@@ -81,8 +81,9 @@
                     4976
                 </td>
                 <td align="left">
-                    <img src= "../BookImages/<%# Eval("BPic") %> " width="50px" height="50px" /> <%# Eval("BName") %>
+                    <img src= "../BookImages/<%# Eval("BPic") %> " width="50px" height="50px" />
                 </td>
+			<td> <%# Eval("BName") %></td>
                 <td>
                     <span><%# Eval("BISBN") %></span>
                 </td>
@@ -94,7 +95,7 @@
                 </td>
                 <td align="center">
                        <a href='goodEdit.aspx?BID=<%# Eval("BID") %>'> <img alt="" src="images/icon_edit.gif" width="16" height="16" border="0" /></a>
-                    <asp:ImageButton ID="ImageButton1" src="images/icon_trash.gif" runat="server" width="16" height="16" border="0" OnClientClick="del()" OnClick="ImageButton1_Click" CommandArgument='<%# Eval("BID") %>'></asp:ImageButton>
+                    <asp:ImageButton ID="ImageButton1" src="images/icon_trash.gif" runat="server" width="16" height="16" border="0" OnClientClick=" return del()" OnClick="ImageButton1_Click" CommandArgument='<%# Eval("BID") %>'></asp:ImageButton>
                 </td>
             </tr>
         </ItemTemplate>

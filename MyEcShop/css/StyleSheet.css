@@ -1,0 +1,54 @@
+ body
+        {
+            font-size: 9pt;
+            color: #1984e6;
+            line-height: 16pt;
+            font-family: "Tahoma" , "宋体";
+            text-decoration: none;
+        }
+        table
+        {
+            font-size: 9pt;
+            color: #1984e6;
+            line-height: 16pt;
+            font-family: "Tahoma" , "宋体";
+            text-decoration: none;
+        }
+        td
+        {
+            font-size: 9pt;
+            color: #1984e6;
+            line-height: 16pt;
+            font-family: "Tahoma" , "宋体";
+            text-decoration: none;
+        }
+        body
+        {
+            scrollbar-highlight-color: buttonface;
+            scrollbar-shadow-color: buttonface;
+            scrollbar-3dlight-color: buttonhighlight;
+            scrollbar-track-color: #eeeeee;
+            background-color: #ffffff;
+        }
+        a
+        {
+            font-size: 9pt;
+            color: #1984e6;
+            line-height: 16pt;
+            font-family: "Tahoma" , "宋体";
+            text-decoration: none;
+        }
+        a:hover
+        {
+            font-size: 9pt;
+            color: #ff0000;
+            line-height: 16pt;
+            font-family: "Tahoma" , "宋体";
+            text-decoration: underline;
+        }
+        h1
+        {
+            font-size: 9pt;
+            font-family: "Tahoma" , "宋体";
+        }
+

@@ -33,12 +33,19 @@ namespace MyEcShop.manage
             int BLID = Convert.ToInt32(Request.QueryString["BLID"]);
             if (BLCategoryDAL.update(this.TextBox1.Text,BLID)>0)
             {
-                Response.Write("修改成功");
+				Alert("修改成功");
+				Response.Redirect("goodLType.aspx");
             }
             else
             {
-                Response.Write("修改失败");
+				Alert("修改失败");
             }
         }
-    }
+
+		public void Alert(string str_Message)
+		{
+
+			Page.ClientScript.RegisterStartupScript(Page.GetType(), "message", "<script language='javascript' defer>alert('" + str_Message + "');</script>");
+		}
+	}
 }

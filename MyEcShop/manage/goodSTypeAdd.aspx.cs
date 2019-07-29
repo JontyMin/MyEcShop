@@ -26,19 +26,27 @@ namespace MyEcShop.manage
             }
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            int BLID = Convert.ToInt32(this.DropDownList1.SelectedValue);
-            string BLName = this.TextBox1.Text;
-            if (BSCategoryDAL.addBLCategory(BLID,BLName)>0)
-            {
-				Alert("添加小类成功");
-            }
-            else
-            {
-                Alert("添加小类失败");
-            }
-        }
+		protected void Button1_Click(object sender, EventArgs e)
+		{
+			int BLID = Convert.ToInt32(this.DropDownList1.SelectedValue);
+			string BLName = this.TextBox1.Text;
+			if (BLName == "")
+			{
+				Alert("请输入小类别名");
+			}
+			else
+			{
+				if (BSCategoryDAL.addBLCategory(BLID, BLName) > 0)
+				{
+					Alert("添加小类成功");
+					Response.Redirect("goodSType.aspx");
+				}
+				else
+				{
+					Alert("添加小类失败");
+				}
+			}
+		}
 
         protected void Button2_Click(object sender, EventArgs e)
         {

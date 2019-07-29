@@ -17,28 +17,32 @@ namespace DAL
         {
             List<Book> list=new List<Book>();
             string sql = "select top 5 * from dbo.Book Order by BSaleCount desc";
-            SqlDataReader sdr = DBHelp.MyExecuteReader(sql,null);
-            while(sdr.Read())
-            {
-                Book b = new Book();
-                b.BID = int.Parse(sdr["BID"].ToString());
-                b.BSID = int.Parse(sdr["BSID"].ToString());
-                b.BName = sdr["BName"].ToString();
-                if (b.BName.Length > 10) b.BName = b.BName.Substring(0,11);
-                b.BAuthor = sdr["BAuthor"].ToString();
-                b.BISBN = sdr["BISBN"].ToString();
-                b.BTOC = sdr["BTOC"].ToString();
-                b.BComment=sdr["BComment"].ToString();
-                if (b.BComment.Length > 10) b.BComment = b.BComment.Substring(0,10);
-                b.BPic = sdr["BPic"].ToString();
-                b.BPrice = Double.Parse(sdr["BPrice"].ToString());
-                b.BCount = int.Parse(sdr["BCount"].ToString());
-                b.BDate = DateTime.Parse(sdr["BDate"].ToString());
-                b.BSaleCount = int.Parse(sdr["BSaleCount"].ToString());
-                list.Add(b);
-            }
-            return list;
-        }
+			using (SqlDataReader sdr = DBHelp.MyExecuteReader(sql, null))
+			{
+				while (sdr.Read())
+				{
+					Book b = new Book();
+					b.BID = int.Parse(sdr["BID"].ToString());
+					b.BSID = int.Parse(sdr["BSID"].ToString());
+					b.BName = sdr["BName"].ToString();
+					if (b.BName.Length > 10) b.BName = b.BName.Substring(0, 11);
+					b.BAuthor = sdr["BAuthor"].ToString();
+					b.BISBN = sdr["BISBN"].ToString();
+					b.BTOC = sdr["BTOC"].ToString();
+					b.BComment = sdr["BComment"].ToString();
+					if (b.BComment.Length > 10) b.BComment = b.BComment.Substring(0, 10);
+					b.BPic = sdr["BPic"].ToString();
+					b.BPrice = Double.Parse(sdr["BPrice"].ToString());
+					b.BCount = int.Parse(sdr["BCount"].ToString());
+					b.BDate = DateTime.Parse(sdr["BDate"].ToString());
+					b.BSaleCount = int.Parse(sdr["BSaleCount"].ToString());
+					list.Add(b);
+				}
+				
+			}
+			return list;
+
+		}
         /// <summary>
         /// 查询书籍新品
         /// </summary>
@@ -47,26 +51,30 @@ namespace DAL
         {
             List<Book> list = new List<Book>();
             string sql = "select top 5 * from dbo.Book Order by BDate desc";
-            SqlDataReader sdr = DBHelp.MyExecuteReader(sql, null);
-            while (sdr.Read())
-            {
-                Book b = new Book();
-                b.BID = int.Parse(sdr["BID"].ToString());
-                b.BSID = int.Parse(sdr["BSID"].ToString());
-                b.BName = sdr["BName"].ToString();
-                if (b.BName.Length > 10) b.BName = b.BName.Substring(0, 11);
-                b.BAuthor = sdr["BAuthor"].ToString();
-                b.BISBN = sdr["BISBN"].ToString();
-                b.BTOC = sdr["BTOC"].ToString();
-                b.BComment = sdr["BComment"].ToString();
-                if (b.BComment.Length > 10) b.BComment = b.BComment.Substring(0, 10);
-                b.BPic = sdr["BPic"].ToString();
-                b.BPrice = Double.Parse(sdr["BPrice"].ToString());
-                b.BCount = int.Parse(sdr["BCount"].ToString());
-                b.BDate = DateTime.Parse(sdr["BDate"].ToString());
-                b.BSaleCount = int.Parse(sdr["BSaleCount"].ToString());
-                list.Add(b);
-            }
+			using (SqlDataReader sdr = DBHelp.MyExecuteReader(sql, null)) 
+			{
+				while (sdr.Read())
+				{
+					Book b = new Book();
+					b.BID = int.Parse(sdr["BID"].ToString());
+					b.BSID = int.Parse(sdr["BSID"].ToString());
+					b.BName = sdr["BName"].ToString();
+					if (b.BName.Length > 10) b.BName = b.BName.Substring(0, 11);
+					b.BAuthor = sdr["BAuthor"].ToString();
+					b.BISBN = sdr["BISBN"].ToString();
+					b.BTOC = sdr["BTOC"].ToString();
+					b.BComment = sdr["BComment"].ToString();
+					if (b.BComment.Length > 10) b.BComment = b.BComment.Substring(0, 10);
+					b.BPic = sdr["BPic"].ToString();
+					b.BPrice = Double.Parse(sdr["BPrice"].ToString());
+					b.BCount = int.Parse(sdr["BCount"].ToString());
+					b.BDate = DateTime.Parse(sdr["BDate"].ToString());
+					b.BSaleCount = int.Parse(sdr["BSaleCount"].ToString());
+					list.Add(b);
+				}
+			}
+           
+           
             return list;
         }
         /// <summary>
@@ -81,28 +89,29 @@ namespace DAL
             {
                 new SqlParameter("@id",id)
             };
-            SqlDataReader sdr = DBHelp.MyExecuteReader(sql,pare);
-            while (sdr.Read())
-            {
-                Book b = new Book();
-                b.BID = int.Parse(sdr["BID"].ToString());
-                b.BSID = int.Parse(sdr["BSID"].ToString());
-                b.BName = sdr["BName"].ToString();
-                if (b.BName.Length > 10) b.BName = b.BName.Substring(0, 11);
-                b.BAuthor = sdr["BAuthor"].ToString();
-                b.BISBN = sdr["BISBN"].ToString();
-                b.BTOC = sdr["BTOC"].ToString();
-                if (b.BTOC.Length > 100) b.BTOC = b.BTOC.Substring(0,100);
-                b.BComment = sdr["BComment"].ToString();
-                if (b.BComment.Length > 10) b.BComment = b.BComment.Substring(0, 10);
-                b.BPic = sdr["BPic"].ToString();
-                b.BPrice = Double.Parse(sdr["BPrice"].ToString());
-                b.BCount = int.Parse(sdr["BCount"].ToString());
-                b.BDate = DateTime.Parse(sdr["BDate"].ToString());
-                b.BSaleCount = int.Parse(sdr["BSaleCount"].ToString());
-                list.Add(b);
-            }
-            sdr.Close();
+			using (SqlDataReader sdr = DBHelp.MyExecuteReader(sql, pare))
+			{
+				while (sdr.Read())
+				{
+					Book b = new Book();
+					b.BID = int.Parse(sdr["BID"].ToString());
+					b.BSID = int.Parse(sdr["BSID"].ToString());
+					b.BName = sdr["BName"].ToString();
+					if (b.BName.Length > 10) b.BName = b.BName.Substring(0, 11);
+					b.BAuthor = sdr["BAuthor"].ToString();
+					b.BISBN = sdr["BISBN"].ToString();
+					b.BTOC = sdr["BTOC"].ToString();
+					if (b.BTOC.Length > 100) b.BTOC = b.BTOC.Substring(0, 100);
+					b.BComment = sdr["BComment"].ToString();
+					if (b.BComment.Length > 10) b.BComment = b.BComment.Substring(0, 10);
+					b.BPic = sdr["BPic"].ToString();
+					b.BPrice = Double.Parse(sdr["BPrice"].ToString());
+					b.BCount = int.Parse(sdr["BCount"].ToString());
+					b.BDate = DateTime.Parse(sdr["BDate"].ToString());
+					b.BSaleCount = int.Parse(sdr["BSaleCount"].ToString());
+					list.Add(b);
+				}
+			}
             return list;
         }
        /// <summary>
@@ -122,25 +131,27 @@ namespace DAL
 and BID not in(select top({1}*({2}-1)) BID from Book where  
 BSID in (select BSID from BLCategory bl inner join BSCategory bs on bs.BLID=bl.BLID where bl.BLID={3}))", Convert.ToInt32(BLID), PageSize, PageIndex, Convert.ToInt32(BLID));
             List<Book> list = new List<Book>();
-            SqlDataReader sdr = DBHelp.MyExecuteReader(sql, null);
-            while (sdr.Read())
-            {
-                Book b = new Book();
-                b.BID = int.Parse(sdr["BID"].ToString());
-                b.BSID = int.Parse(sdr["BSID"].ToString());
-                b.BName = sdr["BName"].ToString();
-                if (b.BName.Length > 10) b.BName = b.BName.Substring(0, 11);
-                b.BAuthor = sdr["BAuthor"].ToString();
-                b.BISBN = sdr["BISBN"].ToString();
-                b.BTOC = sdr["BTOC"].ToString();
-                b.BComment = sdr["BComment"].ToString();
-                if (b.BComment.Length > 10) b.BComment = b.BComment.Substring(0, 10);
-                b.BPic = sdr["BPic"].ToString();
-                b.BPrice = Double.Parse(sdr["BPrice"].ToString());
-                b.BCount = int.Parse(sdr["BCount"].ToString());
-                b.BDate = DateTime.Parse(sdr["BDate"].ToString());
-                b.BSaleCount = int.Parse(sdr["BSaleCount"].ToString());
-                list.Add(b);
+			using (SqlDataReader sdr = DBHelp.MyExecuteReader(sql, null))
+			{
+				while (sdr.Read())
+				{
+					Book b = new Book();
+					b.BID = int.Parse(sdr["BID"].ToString());
+					b.BSID = int.Parse(sdr["BSID"].ToString());
+					b.BName = sdr["BName"].ToString();
+					if (b.BName.Length > 10) b.BName = b.BName.Substring(0, 11);
+					b.BAuthor = sdr["BAuthor"].ToString();
+					b.BISBN = sdr["BISBN"].ToString();
+					b.BTOC = sdr["BTOC"].ToString();
+					b.BComment = sdr["BComment"].ToString();
+					if (b.BComment.Length > 10) b.BComment = b.BComment.Substring(0, 10);
+					b.BPic = sdr["BPic"].ToString();
+					b.BPrice = Double.Parse(sdr["BPrice"].ToString());
+					b.BCount = int.Parse(sdr["BCount"].ToString());
+					b.BDate = DateTime.Parse(sdr["BDate"].ToString());
+					b.BSaleCount = int.Parse(sdr["BSaleCount"].ToString());
+					list.Add(b);
+				}
             }
             return list;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
         }
@@ -185,5 +196,38 @@ BSID in (select BSID from BLCategory bl inner join BSCategory bs on bs.BLID=bl.B
             string sql = string.Format("update Book set BSID={0},BName='{1}',BAuthor='{2}',BISBN='{3}',BPic='{4}',BPrice={5},BCount={6} where BID={7}", b.BSID, b.BName, b.BAuthor, b.BISBN, b.BPic, b.BPrice, b.BCount, b.BID);
             return DBHelp.MyExecuteNonQuery(sql, null);
         }
+
+		public static List<Book> selByName(String Bname) {
+			String sql = string.Format("select * from [dbo].[Book] where BName like '%@Bname%'");
+			SqlParameter[] sp = new SqlParameter[] {
+				new SqlParameter("@Bname",Bname)
+			};
+			List<Book> list = new List<Book>();
+			using (SqlDataReader sdr = DBHelp.MyExecuteReader(sql, sp))
+			{
+				while (sdr.Read())
+				{
+					Book b = new Book();
+					b.BID = int.Parse(sdr["BID"].ToString());
+					b.BSID = int.Parse(sdr["BSID"].ToString());
+					b.BName = sdr["BName"].ToString();
+					if (b.BName.Length > 10) b.BName = b.BName.Substring(0, 11);
+					b.BAuthor = sdr["BAuthor"].ToString();
+					b.BISBN = sdr["BISBN"].ToString();
+					b.BTOC = sdr["BTOC"].ToString();
+					b.BComment = sdr["BComment"].ToString();
+					if (b.BComment.Length > 10) b.BComment = b.BComment.Substring(0, 10);
+					b.BPic = sdr["BPic"].ToString();
+					b.BPrice = Double.Parse(sdr["BPrice"].ToString());
+					b.BCount = int.Parse(sdr["BCount"].ToString());
+					b.BDate = DateTime.Parse(sdr["BDate"].ToString());
+					b.BSaleCount = int.Parse(sdr["BSaleCount"].ToString());
+					list.Add(b);
+				}
+			}
+			return list;
+
+
+		}
     }
 }

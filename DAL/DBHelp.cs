@@ -55,17 +55,20 @@ namespace DAL
         /// <returns></returns>
         public static SqlDataReader MyExecuteReader(string sql, SqlParameter[] pars)
         {
-            SqlConnection sqlcon = new SqlConnection(ConStr);
-            sqlcon.Open();
-            SqlCommand sqlcomm = new SqlCommand(sql, sqlcon);
-            if (pars != null)
-            {
-                sqlcomm.Parameters.AddRange(pars);
-            }
-            SqlDataReader dr = sqlcomm.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
-            return dr;
+			SqlConnection sqlcon = new SqlConnection(ConStr);
+				sqlcon.Open();
+				SqlCommand sqlcomm = new SqlCommand(sql, sqlcon);
+				if (pars != null)
+				{
+					sqlcomm.Parameters.AddRange(pars);
+				}
+				SqlDataReader dr = sqlcomm.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
+				return dr;
 
-        }
+			
+
+
+		}
         /// <summary>
         /// 查询一列多行/多列多行 返回DataSet数据集
         /// </summary>
@@ -73,15 +76,22 @@ namespace DAL
         /// <returns></returns>
         public static DataSet GetDataSet(string sql, SqlParameter[] parame)
         {
-            SqlConnection sqlcon = new SqlConnection(ConStr);
-            SqlDataAdapter sqlda = new SqlDataAdapter(sql, sqlcon);
-            if (parame != null)
-            {
-                sqlda.SelectCommand.Parameters.AddRange(parame);
-            }
-            DataSet ds = new DataSet();
-            sqlda.Fill(ds);
-            return ds;
+			using (SqlConnection sqlcon = new SqlConnection(ConStr))
+			{
+				SqlDataAdapter sqlda = new SqlDataAdapter(sql, sqlcon);
+				if (parame != null)
+				{
+					sqlda.SelectCommand.Parameters.AddRange(parame);
+				}
+				DataSet ds = new DataSet();
+				sqlda.Fill(ds);
+				return ds;
+			}
+		
+				
+			
+         
+        
         }
     }
 }

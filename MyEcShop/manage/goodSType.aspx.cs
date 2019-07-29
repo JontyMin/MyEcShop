@@ -35,13 +35,19 @@ namespace MyEcShop.manage
             int BSID = Convert.ToInt32(btu.CommandArgument);
             if (BSCategoryDAL.deleteByBSID(BSID)>0)
             {
-                Response.Write("删除成功");
+				Alert("删除成功");
                 ShowDate();
             }
             else
             {
-                Response.Write("删除失败");
+				Alert("删除失败");
             }
         }
-    }
+
+		public void Alert(string str_Message)
+		{
+
+			Page.ClientScript.RegisterStartupScript(Page.GetType(), "message", "<script language='javascript' defer>alert('" + str_Message + "');</script>");
+		}
+	}
 }

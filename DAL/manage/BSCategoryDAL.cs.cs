@@ -25,7 +25,7 @@ namespace DAL
         /// <returns></returns>
         public static int updateByBSID(int BLID,string BLName,int BSID)
         {
-            return DBHelp.MyExecuteNonQuery(string.Format("update BSCategory set BLID={0},BLName='{1}' where BSID={2}",BLID,BLName,BSID),null);
+            return DBHelp.MyExecuteNonQuery(string.Format("update BSCategory set BLID={0},BSName='{1}' where BSID={2}",BLID,BLName,BSID),null);
         }
         /// <summary>
         /// 根据id删除

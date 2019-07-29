@@ -74,7 +74,10 @@ namespace MyEcShop
             int count = LoginDAL.add(m);
             if (count > 0)
             {
-				Alert("注册成功");
+				Alert("注册成功,可以登陆了");
+			
+				this.TextBox3.Text = "";
+				this.TextBox4.Text = "";
 			}
             else
             {

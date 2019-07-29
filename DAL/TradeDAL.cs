@@ -32,19 +32,23 @@ namespace DAL
 		{
 			List<Trade> list = new List<Trade>();
 			string sql = string.Format("select * from Trade inner join Book on Trade.BID=Book.BID where MID={0} and Trade.TID in ({1})", MID, ids);
-			SqlDataReader sdr = DBHelp.MyExecuteReader(sql, null);
-			while (sdr.Read())
+			using (SqlDataReader sdr = DBHelp.MyExecuteReader(sql, null))
 			{
-				Trade t = new Trade();
-				t.TID = Convert.ToInt32(sdr["TID"]);
-				t.BID = Convert.ToInt32(sdr["BID"]);
-				t.MID = Convert.ToInt32(sdr["MID"]);
-				t.BCount = Convert.ToInt32(sdr["BCount"]);
-				t.BName = sdr["BName"].ToString();
-				t.BPic = sdr["BPic"].ToString();
-				t.BPrice = Convert.ToInt32(sdr["BPrice"]);
-				list.Add(t);
+				while (sdr.Read())
+				{
+					Trade t = new Trade();
+					t.TID = Convert.ToInt32(sdr["TID"]);
+					t.BID = Convert.ToInt32(sdr["BID"]);
+					t.MID = Convert.ToInt32(sdr["MID"]);
+					t.BCount = Convert.ToInt32(sdr["BCount"]);
+					t.BName = sdr["BName"].ToString();
+					t.BPic = sdr["BPic"].ToString();
+					t.BPrice = Convert.ToInt32(sdr["BPrice"]);
+					list.Add(t);
+				}
 			}
+			
+		
 			return list;
 		}
 		/// <summary>
@@ -60,19 +64,23 @@ namespace DAL
 			{
 				new SqlParameter("@MID",MID)
 			};
-			SqlDataReader sdr = DBHelp.MyExecuteReader(sql, pare);
-			while (sdr.Read())
+			using (SqlDataReader sdr = DBHelp.MyExecuteReader(sql, pare))
 			{
-				Trade t = new Trade();
-				t.TID = Convert.ToInt32(sdr["TID"]);
-				t.BID = Convert.ToInt32(sdr["BID"]);
-				t.MID = Convert.ToInt32(sdr["MID"]);
-				t.BCount = Convert.ToInt32(sdr["BCount"]);
-				t.BName = sdr["BName"].ToString();
-				t.BPic = sdr["BPic"].ToString();
-				t.BPrice = Convert.ToInt32(sdr["BPrice"]);
-				list.Add(t);
+				while (sdr.Read())
+				{
+					Trade t = new Trade();
+					t.TID = Convert.ToInt32(sdr["TID"]);
+					t.BID = Convert.ToInt32(sdr["BID"]);
+					t.MID = Convert.ToInt32(sdr["MID"]);
+					t.BCount = Convert.ToInt32(sdr["BCount"]);
+					t.BName = sdr["BName"].ToString();
+					t.BPic = sdr["BPic"].ToString();
+					t.BPrice = Convert.ToInt32(sdr["BPrice"]);
+					list.Add(t);
+				}
 			}
+			
+			
 			return list;
 		}
 		/// <summary>

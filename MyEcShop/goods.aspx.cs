@@ -15,6 +15,10 @@ namespace MyEcShop
         
         protected void Page_Load(object sender, EventArgs e)
         {
+			//HttpCookie httpCookie = new HttpCookie("Book");
+			//httpCookie.Expires = DateTime.Today.AddDays(7);
+			//httpCookie.Values["Bpic"]=
+
             if (!IsPostBack)
             {
                 if (Request.QueryString["id"] == null) return;
@@ -128,6 +132,7 @@ namespace MyEcShop
                 img.Enabled = false;
                 return;
             }
+			
             img.Enabled = true;
         }
 

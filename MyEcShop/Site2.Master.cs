@@ -53,6 +53,9 @@ namespace MyEcShop
                 this.Repeater1.DataBind();
                
             }
+
+			//int id = Convert.ToInt32(Session["zhuji"].ToString());
+			//Response.Write(id);
           
         }
 
@@ -86,6 +89,10 @@ namespace MyEcShop
 
         }
 
-
+		protected void Button2_Click(object sender, EventArgs e)
+		{
+			Session.Clear();
+			Response.Redirect("login.aspx");
+		}
 	}
 }

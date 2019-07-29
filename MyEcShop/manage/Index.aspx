@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>ECSHOP管理中心</title>
 </head>
  <frameset rows="52,*" framespacing="0" border="0">
         <frame src="top.aspx" id="header-frame" name="header-frame" frameborder="no" scrolling="no" />

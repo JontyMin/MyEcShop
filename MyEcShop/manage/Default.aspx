@@ -8,6 +8,7 @@
     
 </script>
     <title>
+		后台登录
     </title>
      <link href="styles/general.css" rel="stylesheet" type="text/css" />
     <link href="styles/main.css" rel="stylesheet" type="text/css" />
@@ -52,7 +53,7 @@
                             验证码：
                         </td>
                         <td>
-                            <asp:TextBox ID="TextBox3" runat="server" class="capital"></asp:TextBox>
+                            <asp:TextBox ID="TextBox3" runat="server" class="capital" Height="18px"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>

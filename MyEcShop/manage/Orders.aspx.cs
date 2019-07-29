@@ -9,14 +9,34 @@ using DAL;
 
 namespace MyEcShop
 {
+
+ 
+	//public enum MyOrders
+	//{
+	//	新订单=1,
+	//	确认订单=2,
+	//	发货订单=3,
+	//	完成订单=4
+	//}
+
+
     public partial class Orders : System.Web.UI.Page
     {
+
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["AID"] == null)
             {
                 Response.Redirect("Default.aspx");
             }
+			//if (Request.QueryString["Ostate"]!=null)
+			//{
+			//	int Ostate = Convert.ToInt32(Request.QueryString["Ostate"]);
+			//	this.Repeater1.DataSource = OrdersDAL.GetOrdersByOstate(Ostate,5,1);
+			//	this.Repeater1.DataBind();
+			//}
             if (!IsPostBack)
             {
                 this.Repeater1.DataSource = OrdersDAL.getOrders(this.txtID.Text, this.txtName.Text, 5, 1);
@@ -40,34 +60,39 @@ namespace MyEcShop
 
         protected void Repeater1_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
-            //显示订单状态
-            if (e.Item.ItemType==ListItemType.Item||e.Item.ItemType==ListItemType.AlternatingItem)
-            {
-                Button btu2 = e.Item.FindControl("Button2") as Button;
-                Label lbl=e.Item.FindControl("Label1") as Label;
-                int state=Convert.ToInt32(btu2.CommandArgument);
-                switch (state)
-                {
-                    case 1: lbl.Text = "新订单";
-                        btu2.Text = "确认订单";
-                        break;
-                    case 2: lbl.Text = "确认订单";
-                        btu2.Text = "发货订单";
-                        break;
-                    case 3: lbl.Text = "发货订单";
-                        btu2.Text = "成交订单";
-                        break;
-                    default: lbl.Text = "成交订单";
-                        btu2.Enabled = false;
-                        btu2.Text = "已完成";
-                        break;
-                }
-                if (Convert.ToInt32(btu2.CommandArgument)>3)
-                {
-                    btu2.Enabled = false;
-                }
-            }
-        }
+			//显示订单状态
+
+			if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+			{
+				Button btu2 = e.Item.FindControl("Button2") as Button;
+				Label lbl = e.Item.FindControl("Label1") as Label;
+				int state = Convert.ToInt32(btu2.CommandArgument);
+				switch (state)
+				{
+					case 1:
+						lbl.Text = "新订单";
+						btu2.Text = "确认订单";
+						break;
+					case 2:
+						lbl.Text = "确认订单";
+						btu2.Text = "发货订单";
+						break;
+					case 3:
+						lbl.Text = "发货订单";
+						btu2.Text = "成交订单";
+						break;
+					default:
+						lbl.Text = "成交订单";
+						btu2.Enabled = false;
+						btu2.Text = "已完成";
+						break;
+				}
+				if (Convert.ToInt32(btu2.CommandArgument) > 3)
+				{
+					btu2.Enabled = false;
+				}
+			}
+		}
         protected void Button2_Click(object sender,EventArgs e)
         {
             //修改订单状态

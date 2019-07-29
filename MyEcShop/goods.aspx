@@ -29,7 +29,7 @@
                         </li>
                         <li class="clearfix">
                             <dd>
-                                <strong>购买数量：</strong> <asp:TextBox ID="TextBox1" runat="server" style="text-align: center" class="inputBg" size="4" AutoPostBack="true" OnTextChanged="TextBox1_Changed" MaxLength="8">1</asp:TextBox>
+                                <strong>购买数量：</strong> <asp:TextBox ID="TextBox1" runat="server" style="text-align: center" class="inputBg" size="4" AutoPostBack="true" OnTextChanged="TextBox1_Changed" MaxLength="8"  onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}">1</asp:TextBox>
                             </dd>
                             <dd class="ddR">
                             </dd>

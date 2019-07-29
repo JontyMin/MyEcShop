@@ -49,11 +49,13 @@ namespace MyEcShop.manage
         protected void Button1_Click(object sender, EventArgs e)
         {
             string name =this.TextBox1.Text;
-            string BLID = Request.QueryString["BLID"];
-            string BSID = Request.QueryString["BSID"];
-            this.AspNetPager1.RecordCount = BookDAL.dataRows(BLID, BSID, name);
-            this.Repeater1.DataSource = BookDAL.selectBookByType(BLID, BSID, 4, 1, name);
-            this.Repeater1.DataBind();
+			string BLID = Request.QueryString["BLID"];
+			string BSID = Request.QueryString["BSID"];
+			this.AspNetPager1.RecordCount = BookDAL.dataRows(BLID, BSID, name);
+			this.Repeater1.DataSource = BookDAL.selectBookByType(BLID, BSID, 4, 1, name);
+			this.Repeater1.DataBind();
+			//this.Repeater1.DataSource = BookDAL.selByName(name);
+			//this.Repeater1.DataBind();
         }
         protected void ImageButton1_Click(object sender,EventArgs e)
         {

@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>商品信息修改</title>
     <link href="styles/general.css" rel="stylesheet" type="text/css" />
     <link href="styles/main.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
@@ -40,19 +40,19 @@
         <table width="90%" id="general-table" align="center">
           <tr>
             <td class="label">商品名称：</td>
-            <td><asp:TextBox ID="txtName" runat="server" size="20"></asp:TextBox></td>
+            <td><asp:TextBox ID="txtName" runat="server" size="20" MaxLength="20"></asp:TextBox></td>
           </tr>
           <tr>
             <td class="label">商品货号：</td>
             <td><span
       </p>
-                <asp:TextBox ID="txtbisd" runat="server" size="20"></asp:TextBox></td>
+                <asp:TextBox ID="txtbisd" runat="server" size="20" MaxLength="10"></asp:TextBox></td>
           </tr>
           <tr>
             <td class="label">作者：</td>
             <td><span
       </p>
-                <asp:TextBox ID="txtAuthor" runat="server" size="20"></asp:TextBox></td>
+                <asp:TextBox ID="txtAuthor" runat="server" size="20" MaxLength="10"></asp:TextBox></td>
           </tr>
           <tr>
             <td class="label">商品小类：</td>
@@ -61,7 +61,7 @@
           </tr>
           <tr>
             <td class="label">商品价格：</td>
-            <td><asp:TextBox ID="txtPrice" runat="server"></asp:TextBox>
+            <td><asp:TextBox ID="txtPrice" runat="server" MaxLength="10"></asp:TextBox>
           </tr>
           <tr>
             <td class="label">上传商品图片：</td>
@@ -71,7 +71,7 @@
           </tr>
           <tr>
             <td class="label">商品库存：</td>
-            <td><asp:TextBox ID="txtBcount" runat="server"></asp:TextBox>
+            <td><asp:TextBox ID="txtBcount" runat="server" MaxLength="10"></asp:TextBox>
           </tr>
         </table>
         </span>

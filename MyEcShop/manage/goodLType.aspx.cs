@@ -32,12 +32,12 @@ namespace MyEcShop.manage
             {
                 if (BLCategoryDAL.addBLCategory(this.TextBox1.Text)>0)
                 {
-                    Response.Write("<script>alert('添加成功')</script>");
+					Alert("添加成功");
                     ShowDate();
                 }
                 else
                 {
-                    Response.Write("<script>alert('添加失败')</script>");
+					Alert("添加失败");
                 }
             }
         }
@@ -48,17 +48,7 @@ namespace MyEcShop.manage
         /// <param name="argds"></param>
         protected void ImageButton1_Click(object sender, EventArgs argds)
         {
-            ImageButton btu = sender as ImageButton;
-            int BID = Convert.ToInt32(btu.CommandArgument);
-            if (BLCategoryDAL.delete(BID)>0)
-            {
-                //刷新数据
-                ShowDate();
-            }
-            else
-            {
-                Response.Write("删除失败");
-            }
+            
         }
         /// <summary>
         /// 编辑
@@ -69,5 +59,32 @@ namespace MyEcShop.manage
         { 
         
         }
-    }
+		public void Alert(string str_Message)
+		{
+
+			Page.ClientScript.RegisterStartupScript(Page.GetType(), "message", "<script language='javascript' defer>alert('" + str_Message + "');</script>");
+		}
+
+		protected void ImageButton3_Click(object sender, ImageClickEventArgs e)
+		{
+			ImageButton btu = sender as ImageButton;
+			int BLID = Convert.ToInt32(btu.CommandArgument);
+			Response.Redirect("goodSType.aspx?"+ BLID);
+		}
+
+		protected void ImageButton2_Click(object sender, ImageClickEventArgs e)
+		{
+			ImageButton btu = sender as ImageButton;
+			int BID = Convert.ToInt32(btu.CommandArgument);
+			if (BLCategoryDAL.delete(BID) > 0)
+			{
+				//刷新数据
+				ShowDate();
+			}
+			else
+			{
+				Alert("删除失败");
+			}
+		}
+	}
 }

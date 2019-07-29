@@ -41,17 +41,33 @@ namespace MyEcShop.manage
             b.BPrice = Convert.ToInt32(this.txtPrice.Text);
             b.BCount = Convert.ToInt32(this.txtBcount.Text);
             b.BPic = FileUpload1.FileName;
-            string path = Server.MapPath("~/BookImages/" +b.BPic);
-            this.FileUpload1.SaveAs(path);
-            if (BookDAL.addBook(b)>0)
-            {
-                Response.Write("<script>alert('添加成功')</script>");
-            }
-            else
-            {
-                Response.Write("<script>alert('添加失败')</script>");
-            }
+			if (FileUpload1.FileName == "")
+			{
+				Alert("请选择文件");
+			}
+			else
+			{
+				string path = Server.MapPath("~/BookImages/" + b.BPic);
+				this.FileUpload1.SaveAs(path);
+				if (BookDAL.addBook(b) > 0)
+				{
+					Alert("添加成功");
 
+					//恢复默认
+					this.txtName.Text = "";
+					this.txtAuthor.Text = "";
+					this.txtbisd.Text = "";
+					DropDownList1.SelectedIndex = 0;
+					this.txtPrice.Text = "";
+					this.txtBcount.Text = "";
+
+
+				}
+				else
+				{
+					Alert("添加失败");
+				}
+			}
         }
 
         protected void Button2_Click(object sender, EventArgs e)
@@ -61,5 +77,11 @@ namespace MyEcShop.manage
             this.txtAuthor.Text = "";
             this.txtBcount.Text = "";
         }
-    }
+
+		public void Alert(string str_Message)
+		{
+
+			Page.ClientScript.RegisterStartupScript(Page.GetType(), "message", "<script language='javascript' defer>alert('" + str_Message + "');</script>");
+		}
+	}
 }

@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="flow.aspx.cs" Inherits="MyEcShop.flow" %>
 <%@ Register assembly="AspNetPager" namespace="Wuqi.Webdiyer" tagprefix="webdiyer" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-<script type="text/javascript">
+	<script type="text/javascript">
     function Del() {
         if (confirm("您确定要移出购物车吗？")) {
             return true;
@@ -11,7 +11,7 @@
 </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<%--<form method="get" runat="server">--%>
+	<%--<form method="get" runat="server">--%>
 <div>
 <div>
             <h6>
@@ -57,7 +57,7 @@
                             <asp:Label ID="lblPrice" runat="server" Text='<%# Eval("BPrice") %>'></asp:Label>
                         </td>
                         <td align="right" bgcolor="#ffffff">
-                            <asp:TextBox ID="TextBox1" runat="server" style="text-align: center" class="inputBg" size="4" OnTextChanged="TextBox1_Changed" AutoPostBack="true" MaxLength="8" Text='<%# Eval("BCount") %>'></asp:TextBox>
+                            <asp:TextBox ID="TextBox1" runat="server" style="text-align: center" class="inputBg" size="4" OnTextChanged="TextBox1_Changed" AutoPostBack="true" MaxLength="5" Text='<%# Eval("BCount") %>' onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"></asp:TextBox>
                         </td>
                         <td align="right" bgcolor="#ffffff">
                             <asp:Label ID="lblSum" runat="server" Text='<%# Convert.ToSingle(Eval("BPrice")) * Convert.ToInt32(Eval("BCount"))%>' ></asp:Label>
@@ -76,7 +76,7 @@
                 <tbody>
 					<tr>
 						<td align="right" bgcolor="#ffffff">
-							<asp:Button ID="Button1" runat="server" Text="清空购物车" BackColor="#CCFFFF" BorderColor="#CCFFCC" BorderStyle="Solid" Font-Bold="True" Font-Italic="False" Font-Overline="False" OnClick="Button1_Click" />
+							<asp:Button ID="Button1" runat="server" Text="清空购物车" BackColor="#CCFFFF" BorderColor="#CCFFCC" BorderStyle="Solid" Font-Bold="True" Font-Italic="False" Font-Overline="False" OnClick="Button1_Click" OnClientClick="return Del()" />
 						</td>
 
 					</tr>

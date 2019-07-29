@@ -33,6 +33,7 @@ namespace MyEcShop.manage
                 this.txtAuthor.Text = b.BAuthor;
                 this.txtbisd.Text = b.BISBN.ToString();
                 this.txtPrice.Text = b.BPrice.ToString();
+				//this.labFileName.Text = b.BPic.ToString();
                 this.txtBcount.Text = b.BCount.ToString();
                 this.DropDownList1.SelectedValue = b.BSID.ToString();
             }

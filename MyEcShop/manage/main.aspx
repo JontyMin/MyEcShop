@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>ECSHOP管理中心</title>
     <link href="styles/general.css" rel="stylesheet" type="text/css" />
     <link href="styles/main.css" rel="stylesheet" type="text/css" />
 </head>
@@ -30,7 +30,7 @@
                 </td>
                 <td width="30%">
                     <strong style="color: red">
-                        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label></strong>
+                       <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label></strong>
                 </td>
                 <td width="20%">
                     确认订单:

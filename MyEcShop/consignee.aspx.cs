@@ -68,10 +68,17 @@ namespace MyEcShop
             orders.OSumPrice = Convert.ToInt32(this.Label1.Text);//总计;
             //保存订单:
             int count = OrdersDAL.SavaOrder(orders, listDetails);
-            if (count > 0)
-            {
-                Response.Redirect("done.aspx?OID=" + orders.OID);
-            }
+			//if (txtName.Text!=null && txtTel.Text!=null && txtAddress!=null)
+			//{
+				if (count > 0)
+				{
+					Response.Redirect("done.aspx?OID=" + orders.OID);
+				}
+			}
+			//else
+			//{
+			//	ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('请填写收货地址哦')</script>");
+			//}
+         
         }
     }
-}

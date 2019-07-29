@@ -11,7 +11,7 @@ namespace MyEcShop.manage
     public partial class CodeMa : System.Web.UI.Page
     {
         static Random r = new Random();
-        string ma = "abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"; 
+        string ma = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"; 
         protected void Page_Load(object sender, EventArgs e)
         {
             //产生随机验证码
@@ -20,8 +20,8 @@ namespace MyEcShop.manage
             {
                 code += ma[r.Next(0, ma.Length)].ToString();
             }
-            //将验证码保存在Session中
-            Session["code"] = code;
+			//将验证码保存在Session中
+			Session["code"] = code;
             //设置一张图片
             Response.ContentType = "images/gif";
 

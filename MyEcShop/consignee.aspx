@@ -24,20 +24,20 @@
                     <asp:Repeater ID="Repeater1" runat="server">
                     <ItemTemplate>
                                 <tr>
-                    <td align="left" bgcolor="#ffffff">
+                    <td align="center" bgcolor="#ffffff">
                         <asp:ImageButton ID="ImageButton1" runat="server"  title='<%# Eval("BName") %>'  ImageUrl='<%# "BookImages/"+ Eval("BPic") %> ' Height="80px" Width="80px" CommandArgument='<%# Eval("BID") %>'/>
                            </td>
-									<td align="left" bgcolor="#ffffff">
+									<td align="center" bgcolor="#ffffff">
 						<%# Eval("BName") %>
                         </td>
-                        <td align="right" bgcolor="#ffffff">
-                            <asp:Label ID="lblPrice" runat="server" Text='<%# Eval("BPrice") %>'></asp:Label> 
+                        <td align="center" bgcolor="#ffffff">
+                            ￥<asp:Label ID="lblPrice" runat="server" Text='<%# Eval("BPrice") %>'></asp:Label> 
                         </td>
-                        <td align="right" bgcolor="#ffffff">
+                        <td align="center" bgcolor="#ffffff">
                             <asp:Label ID="lblBCount" runat="server" Text='<%# Eval("BCount") %>'></asp:Label>
                         </td>
-                        <td align="right" bgcolor="#ffffff">
-                           <asp:Label ID="lblSum" runat="server" Text='<%# Convert.ToInt32(Eval("BPrice")) * Convert.ToInt32(Eval("BCount"))%>' ></asp:Label>
+                        <td align="center" bgcolor="#ffffff">
+                          ￥<asp:Label ID="lblSum" runat="server" Text='<%# Convert.ToInt32(Eval("BPrice")) * Convert.ToInt32(Eval("BCount"))%>' ></asp:Label>
                         </td>
                          </tr>
                     </ItemTemplate>
@@ -57,14 +57,14 @@
                         </td>
                         <td bgcolor="#ffffff">
                             <asp:TextBox ID="txtName" runat="server" class="inputBg"></asp:TextBox>
-                            (必填)
+                            (必填)<asp:RequiredFieldValidator ControlToValidate="txtName" ValidationGroup="1" ID="RequiredFieldValidator1" runat="server" ErrorMessage="请填写收货信息"></asp:RequiredFieldValidator>
                         </td>
                         <td bgcolor="#ffffff">
                             详细地址:
                         </td>
                         <td bgcolor="#ffffff">
                             <asp:TextBox ID="txtAddress" runat="server" class="inputBg"></asp:TextBox>
-                            (必填)
+                            (必填)<asp:RequiredFieldValidator ControlToValidate="txtAddress" ValidationGroup="1" ID="RequiredFieldValidator2" runat="server" ErrorMessage="请填写收货信息"></asp:RequiredFieldValidator>
                         </td>
                     </tr>
                     <tr>
@@ -73,18 +73,18 @@
                         </td>
                         <td bgcolor="#ffffff">
                             <asp:TextBox ID="txtTel" runat="server" class="inputBg"></asp:TextBox>
-                            (必填)
+                            (必填)<asp:RequiredFieldValidator ControlToValidate="txtTel" ValidationGroup="1" ID="RequiredFieldValidator3" runat="server" ErrorMessage="请填写收货信息"></asp:RequiredFieldValidator>
                         </td>
                         <td bgcolor="#ffffff">
                             总金额:
                         </td>
                         <td bgcolor="#ffffff">
-                            <asp:Label ID="Label1" runat="server" Text="0"></asp:Label></asp:TextBox>
+                            ￥<asp:Label ID="Label1" runat="server" Text="0"></asp:Label></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
                         <td align="center" bgcolor="#ffffff" colspan="4">
-                            <asp:Button ID="Button1" class="bnt_blue_2" runat="server" Text="配送至这个地址" OnClick="Button1_Click" Width="139px"/>
+                            <asp:Button ID="Button1" class="bnt_blue_2" runat="server" Text="配送至这个地址" ValidationGroup="1" OnClick="Button1_Click" Width="139px"/>
                         </td>
                     </tr>
                 </tbody>

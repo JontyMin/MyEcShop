@@ -20,6 +20,7 @@ namespace MyEcShop
             if (Session["Name"] != null)
             {
                 this.Label1.Text = Session["Name"].ToString();
+
             }
         }
 

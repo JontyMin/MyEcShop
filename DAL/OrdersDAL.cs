@@ -27,22 +27,70 @@ namespace DAL
         {
             List<Order> list = new List<Order>();
             string sql = string.Format("select top(5) * from dbo.Orders where OID not in(select top({0}*({1}-1)) OID from Orders where OID like '%{2}%' and OConsignee like '%{3}%') and OID like '%{4}%' and OConsignee like '%{5}%'", PageSize, PageIndex, ID, name,ID,name);
-            SqlDataReader sdr = DBHelp.MyExecuteReader(sql,null);
-            while (sdr.Read())
-            {
-                Order o = new Order();
-                o.MID = Convert.ToInt32(sdr["MID"]);
-                o.OAddress = sdr["OAddress"].ToString();
-                o.OConsignee = sdr["OConsignee"].ToString();
-                o.ODate = Convert.ToDateTime(sdr["ODate"]);
-                o.OID = sdr["OID"].ToString();
-                o.OState = Convert.ToInt32(sdr["OState"]);
-                o.OSumPrice = Convert.ToInt32(sdr["OSumPrice"]);
-                o.OTelephone = sdr["OTelephone"].ToString();
-                list.Add(o);
-            }
+			using (SqlDataReader sdr = DBHelp.MyExecuteReader(sql, null))
+			{
+				while (sdr.Read())
+				{
+					Order o = new Order();
+					o.MID = Convert.ToInt32(sdr["MID"]);
+					o.OAddress = sdr["OAddress"].ToString();
+					o.OConsignee = sdr["OConsignee"].ToString();
+					o.ODate = Convert.ToDateTime(sdr["ODate"]);
+					o.OID = sdr["OID"].ToString();
+					o.OState = Convert.ToInt32(sdr["OState"]);
+					o.OSumPrice = Convert.ToInt32(sdr["OSumPrice"]);
+					o.OTelephone = sdr["OTelephone"].ToString();
+					list.Add(o);
+				}
+			}
             return list;
         }
+
+
+		/// <summary>
+		/// 根据订单状态查询
+		/// </summary>
+		/// <param name="Ostate"></param>
+		/// <param name="PageSize"></param>
+		/// <param name="PageIndex"></param>
+		/// <returns></returns>
+		//public static List<Order> GetOrdersByOstate(int Ostate,int PageSize,int PageIndex) {
+		//	List<Order> list = new List<Order>();
+		//	String sql = string.Format("select top(5) * from dbo.Orders where OID not in(select top(@PageSize*(@PageIndex-1)) OID from Orders where OState = @Ostate) and OState=@Ostate;");
+		//	SqlParameter[] sp = new SqlParameter[] {
+		//		new SqlParameter("@PageSize",PageSize),
+		//		new SqlParameter("@PageIndex",PageIndex),
+		//		new SqlParameter("@Ostate",Ostate),
+		//		new SqlParameter("@Ostate",Ostate)
+		//	};
+		//	using (SqlDataReader sdr = DBHelp.MyExecuteReader(sql, null))
+		//	{
+		//		while (sdr.Read())
+		//		{
+		//			Order o = new Order();
+		//			o.MID = Convert.ToInt32(sdr["MID"]);
+		//			o.OAddress = sdr["OAddress"].ToString();
+		//			o.OConsignee = sdr["OConsignee"].ToString();
+		//			o.ODate = Convert.ToDateTime(sdr["ODate"]);
+		//			o.OID = sdr["OID"].ToString();
+		//			o.OState = Convert.ToInt32(sdr["OState"]);
+		//			o.OSumPrice = Convert.ToInt32(sdr["OSumPrice"]);
+		//			o.OTelephone = sdr["OTelephone"].ToString();
+		//			list.Add(o);
+		//		}
+		//	}
+		//	return list;
+		//}
+
+		//public static int getOrdersRowsByOstate(int Ostate) {
+		//	String sql = string.Format("select COUNT(*) from Orders where OState=@Ostate");
+		//	SqlParameter[] sp = new SqlParameter[] {
+		//		new SqlParameter("@Ostate",Ostate),
+		//	};
+		//	int count = Convert.ToInt32(DBHelp.MyExecuteNonQuery(sql,sp));
+		//	return count;
+
+		//}
         /// <summary>
         /// 获取行数
         /// </summary>

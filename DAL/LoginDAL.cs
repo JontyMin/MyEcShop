@@ -23,14 +23,16 @@ namespace DAL
             new SqlParameter("@name",name),
             new SqlParameter("@pwd",pwd)
            };
-            SqlDataReader sdr = DBHelp.MyExecuteReader(sql, pare);
-            while (sdr.Read())
-            {
-                m.MID = int.Parse(sdr["MID"].ToString());
-                m.MName = sdr["MName"].ToString();
-                m.MEmail = sdr["MEmail"].ToString();
-                m.MPassword = sdr["MPassword"].ToString();
-            }
+			using (SqlDataReader sdr = DBHelp.MyExecuteReader(sql, pare))
+			{
+				while (sdr.Read())
+				{
+					m.MID = int.Parse(sdr["MID"].ToString());
+					m.MName = sdr["MName"].ToString();
+					m.MEmail = sdr["MEmail"].ToString();
+					m.MPassword = sdr["MPassword"].ToString();
+				}
+			}
             return m;
         }
         /// <summary>
