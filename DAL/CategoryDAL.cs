@@ -1,21 +1,19 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Model;
 using System.Data.SqlClient;
 
 namespace DAL
 {
-    public class CategoryDAL
-    {
-        /// <summary>
-        /// 查询大类节点
-        /// </summary>
-        /// <returns></returns>
-        public static List<BLCategory> getBLCategoryList()
-        {
-            List<BLCategory> list = new List<BLCategory>();
+	public class CategoryDAL
+	{
+		/// <summary>
+		/// 查询大类节点
+		/// </summary>
+		/// <returns></returns>
+		public static List<BLCategory> getBLCategoryList()
+		{
+			List<BLCategory> list = new List<BLCategory>();
 			String sql = string.Format("select * from BLCategory");
 			using (SqlDataReader sdr = DBHelp.MyExecuteReader(sql, null))
 			{
@@ -27,16 +25,16 @@ namespace DAL
 					list.Add(bl);
 				}
 			}
-          
-            return list;
-        }
-        /// <summary>
-        /// 查询小类节点
-        /// </summary>
-        /// <returns></returns>
-        public static List<BSCategory> getBSCategoryList(int BLID)
-        {
-            List<BSCategory> list = new List<BSCategory>();
+
+			return list;
+		}
+		/// <summary>
+		/// 查询小类节点
+		/// </summary>
+		/// <returns></returns>
+		public static List<BSCategory> getBSCategoryList(int BLID)
+		{
+			List<BSCategory> list = new List<BSCategory>();
 			String sql = string.Format("select * from BSCategory where BLID=@BLID");
 			SqlParameter[] sp = new SqlParameter[] {
 				new SqlParameter("@BLID",BLID)
@@ -52,15 +50,15 @@ namespace DAL
 					list.Add(bs);
 				}
 			}
-            return list;
-        }
-        /// <summary>
-        /// 查询大，小类节点
-        /// </summary>
-        /// <returns></returns>
-        public static List<BSCategory> getBSCategoryList()
-        {
-            List<BSCategory> list = new List<BSCategory>();
+			return list;
+		}
+		/// <summary>
+		/// 查询大，小类节点
+		/// </summary>
+		/// <returns></returns>
+		public static List<BSCategory> getBSCategoryList()
+		{
+			List<BSCategory> list = new List<BSCategory>();
 			String sql = string.Format("select * from dbo.BLCategory l inner join dbo.BSCategory s on l.BLID=s.BLID");
 			using (SqlDataReader sdr = DBHelp.MyExecuteReader(sql, null))
 			{
@@ -74,7 +72,7 @@ namespace DAL
 					list.Add(bs);
 				}
 			}
-            return list;
-        }
-    }
+			return list;
+		}
+	}
 }

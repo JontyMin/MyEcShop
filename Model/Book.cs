@@ -1,11 +1,9 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Model
 {
-    public class Book
-    { 
+	public class Book
+	{
 		public int BID { get; set; }
 		public int BSID { get; set; }
 		public string BName { get; set; }
@@ -19,5 +17,5 @@ namespace Model
 		public DateTime BDate { get; set; }
 		public int BSaleCount { get; set; }
 
-    }
+	}
 }

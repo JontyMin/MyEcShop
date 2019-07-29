@@ -39,7 +39,7 @@
                         小类别名称：
                     </td>
                     <td>
-                    <asp:TextBox ID="TextBox1" runat="server" style="float: left; color: " size="30"></asp:TextBox>
+                    <asp:TextBox ID="TextBox1" runat="server" style="float: left; color: " size="30" OnTextChanged="TextBox1_TextChanged"></asp:TextBox>
                        <span class="require-field">*</span><br />
                 </tr>
             </table>

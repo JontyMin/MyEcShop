@@ -1,8 +1,6 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Model;
 using System.Data.SqlClient;
 
 namespace DAL
@@ -47,8 +45,8 @@ namespace DAL
 					list.Add(t);
 				}
 			}
-			
-		
+
+
 			return list;
 		}
 		/// <summary>
@@ -79,8 +77,8 @@ namespace DAL
 					list.Add(t);
 				}
 			}
-			
-			
+
+
 			return list;
 		}
 		/// <summary>
@@ -160,14 +158,15 @@ namespace DAL
 		/// <param name="number"></param>
 		/// <param name="bid"></param>
 		/// <returns>影响行数</returns>
-		public static int updateBcountByid(int number,int bid) {
+		public static int updateBcountByid(int number, int bid)
+		{
 			String sql = string.Format("update Book set BCount-=@number where BID=@bid");
 			SqlParameter[] sp = new SqlParameter[] {
 
 				new SqlParameter("@number",number),
 				new  SqlParameter("@bid",bid)
 			};
-			return DBHelp.MyExecuteNonQuery(sql,sp);
+			return DBHelp.MyExecuteNonQuery(sql, sp);
 		}
 
 		/// <summary>
@@ -175,21 +174,23 @@ namespace DAL
 		/// </summary>
 		/// <param name="t"></param>
 		/// <returns></returns>
-		public static int update_Bcount(Trade t) {
+		public static int update_Bcount(Trade t)
+		{
 			String sql = string.Format("update Trade set BCount+=@BCount where MID=@MID and BID=@BID");
 			SqlParameter[] sp = new SqlParameter[] {
 				new SqlParameter("@BCount",t.BCount),
 				new SqlParameter("@MID",t.MID),
 				new SqlParameter("@BID",t.BID),
 			};
-			return DBHelp.MyExecuteNonQuery(sql,sp);
+			return DBHelp.MyExecuteNonQuery(sql, sp);
 		}
 		/// <summary>
 		/// 判断数据是否存在
 		/// </summary>
 		/// <param name="t"></param>
 		/// <returns></returns>
-		public static bool Exits(Trade t) {
+		public static bool Exits(Trade t)
+		{
 			String sql = string.Format("select count(*) from trade where Bid=@Bid and Mid=@Mid");
 			SqlParameter[] sp = new SqlParameter[] {
 				new SqlParameter("@Bid",t.BID),
@@ -197,5 +198,5 @@ namespace DAL
 			};
 			return Convert.ToInt32(DBHelp.MyExecuteScalar(sql, sp)) > 0 ? true : false;
 		}
-    }
+	}
 }

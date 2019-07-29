@@ -1,0 +1,78 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>对不起，您访问的页面不存在 请转到首页进入</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=GB2312"/>
+    <link href="Css/StyleSheet.css" rel="stylesheet" type="text/css" />
+    <meta content="MSHTML 6.00.2800.1458" name="GENERATOR"/>
+</head>
+<body topmargin="20">
+    <table cellspacing="0" width="600" align="center" border="0" cepadding="0">
+        <tbody>
+            <tr colspan="2">
+                <td>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td>
+                                <p>
+                                    <strong><font color="#ba1c1c">HTTP404错误</font></strong>:</p>
+                                <p>
+                                    没有找到您要访问的页面，请检查您是否输入正确URL。</p>
+                            </td>
+                            <td>
+                                <p>
+                                    <img height="100" src="Image/404.jpg" width="100" border="0" alt="" /></p>
+                            </td>
+                        </tr>
+                    </table>
+                    <hr size="0" />
+                    请尝试以下操作：
+                    <p>
+                        ·如果您已经在地址栏中输入该网页的地址，请确认其拼写正确。<br />
+                        ·打开该站点主页，然后查找指向您感兴趣信息的链接。<br />
+                        ·单击<a href="javascript:history.back(1)"><font color="#BA1C1C">后退</font></a>链接，尝试其他链接。<br />
+                        ·单击单击<a href="javascript:doSearch()"><font color="#BA1C1C">搜索</font></a>链接，寻找Internet上的信息。</p>
+                    <p align="right">
+                        如果您在浏览本站时，多次出现此错误，请与管理员联系</p>
+                    <hr size="0" />
+                    <form name="loading" id="loading" runat="server">
+                    <p align="center">
+                        <font face="Arial" color="#0066ff" size="2">loading...</font>
+                        <input style="padding-right: 0px; padding-left: 0px; font-weight: bolder; padding-bottom: 0px;
+                            color: #0066ff; border-top-style: none; padding-top: 0px; font-family: Arial;
+                            border-right-style: none; border-left-style: none; background-color: white; border-bottom-style: none"
+                            size="46" name="chart" />
+                        <br />
+                        <input style="border-right: medium none; border-top: medium none; border-left: medium none;
+                            color: #0066ff; border-bottom: medium none; text-align: center" size="47" name="percent" />
+ 
+                        <script type="text/javascript" language="javascript">
+                        var bar=0
+                        var line="││"
+                        var amount="││"
+                        count()
+                        function count(){
+                        bar=bar+2
+                        amount =amount + line
+                        document.loading.chart.value=amount
+                        document.loading.percent.value=bar+"%"
+                        if (bar<100)
+                        {setTimeout("count()",150);}
+                        else
+                        {window.location ="http://www.51ascx.com";}   //http://www.51ascx.com也可以跳到项目中的指定页面   Default.aspx
+                        }
+                        </script>
+ 
+                    </p>
+                    </form>
+                    <br />
+                    ???<br />
+                    </p><!------------End this!--------------->
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
+
